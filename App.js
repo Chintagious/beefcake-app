@@ -1,15 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  AppRegistry,
+  StyleSheet,
+  View } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Body, Button, Text, Right } from 'native-base';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>WHAT UP DAWGS?</Text>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Container>
+        <Header />
+        <Content>
+          <Card>
+            <CardItem>
+              <Text>
+                WHAT UP DAWGS?{"\n"}
+                Open up App.js to start working on your app!{"\n"}
+                Changes you make will automatically reload.{"\n"}
+                Shake your phone to open the developer menu.
+              </Text>
+            </CardItem>
+            <CardItem>
+              <Body />
+              <Right>
+                <Button>
+                  <Text>A button, yo</Text>
+                </Button>
+              </Right>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
     );
   }
 }
@@ -22,3 +43,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+AppRegistry.registerComponent('App', () => App);
