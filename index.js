@@ -1,4 +1,6 @@
+import React from 'react';
 import { AppRegistry } from 'react-native';
-import App from './App';
+// Require our sub components
+import BeefcakeApp from './src/app.js';
 
-AppRegistry.registerComponent('Beefcake', () => App);
+AppRegistry.registerComponent('Beefcake', () => BeefcakeApp);
