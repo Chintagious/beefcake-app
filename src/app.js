@@ -11,6 +11,10 @@ import {
   View
 } from 'react-native';
 import {
+  connect,
+  // dipatch,
+} from 'react-redux';
+import {
   Container,
   Header,
   Content,
@@ -21,6 +25,24 @@ import {
   Text,
   Right
 } from 'native-base';
+import PropTypes from 'prop-types';
+
+import {
+  weightliftingExerciseSelector,
+  weightliftingExerciseSetRepSelector,
+} from './data/selectors';
+import ExerciseCard from './components/ExerciseCard';
+import orm from './orm';
+
+// TODO move this to actions..
+// import {
+//   CREATE_WEIGHTLIFTING_EXERCISE,
+//   DELETE_WEIGHTLIFTING_EXERCISE,
+// } from './actionTypes';
+import {
+  createWeightliftingExercise,
+  deleteWeightliftingExercise,
+} from './actions';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -29,8 +51,19 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class BeefcakeApp extends Component {
+type Props = {
+  createWeightliftingExercise: PropTypes.func.isRequired,
+  deleteWeightliftingExercise: PropTypes.func.isRequired,
+}
+
+class BeefcakeApp extends Component<Props> {
   render() {
+    console.log("rendering..", this.props);
+    console.log("Fiddna create an exercise");
+    // this.props.createWeightliftingExercise({ "Test": 1});
+    // let appContent = this.getTempContents();
+    // const { create } = this.props;
+
     return (
       <Container>
         <Header>
@@ -41,52 +74,40 @@ export default class BeefcakeApp extends Component {
           </Body>
         </Header>
         <Content>
-          <Card>
-            <Header>
-              <Text style={styles.welcome}>
-                What up, test dawgs?
-              </Text>
-            </Header>
-            <CardItem>
-              <Text style={styles.instructions}>
-                To get started, edit App.js
-              </Text>
-            </CardItem>
-            <CardItem>
-              <Text style={styles.instructions}>
-                {instructions}
-              </Text>
-            </CardItem>
-            <CardItem>
-              <Body />
-              <Right>
-                <Button>
-                  <Text>A button, yo</Text>
-                </Button>
-              </Right>
-            </CardItem>
-          </Card>
+          <ExerciseCard
+            exerciseName={"Squats"}
+            reps={3}
+            maxRepsPerSet={5}
+            sets={5}
+            isLastSetToFailure={true}/>
+
+            <Button onPress={this.props.createWeightliftingExercise({})}>
+              <Text>Add Exercise...</Text>
+            </Button>
         </Content>
       </Container>
     );
-  }
+  };
+
+  // getTempContents() {
+  //   let tempContent;
+  //
+  //   return tempContent;
+  // }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'right',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+function mapStateToProps(state, props) {
+    console.log("Mapping state to props..", state, props);
+    return {
+      ...props,
+      weightliftingExercises: weightliftingExerciseSelector(state),
+      // weightliftingExerciseSetReps: weightliftingExerciseSetRepSelector(state),
+    };
+}
+
+const mapDispatchToProps = {
+    createWeightliftingExercise,
+    deleteWeightliftingExercise,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeefcakeApp);
