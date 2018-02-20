@@ -1,15 +1,13 @@
 // @flow
 import PropTypes from 'prop-types';
-import { Model, fk, attr } from 'redux-orm';
-import { ValidatingModel } from '../ValidatingModel';
 import { WeightliftingExercise } from '../WeightliftingExercise';
 import { generateUUID } from '../../lib/uuid';
 
-export class WeightliftingExerciseSetRep extends Model {
-
+export class WeightliftingExerciseSetRep {
 
 }
 
+/*
 WeightliftingExerciseSetRep.modelName = "WeightliftingExerciseSetRep";
 WeightliftingExerciseSetRep.fields = {
     id: attr({ getDefault: () => generateUUID() }),
@@ -36,3 +34,5 @@ WeightliftingExerciseSetRep.propTypes = {
 // WeightliftingExerciseSetRep.defaultProps = {
 //     isFetching: false,
 // };
+
+*/

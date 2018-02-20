@@ -32,7 +32,6 @@ import {
   weightliftingExerciseSetRepSelector,
 } from './data/selectors';
 import ExerciseCard from './components/ExerciseCard';
-import orm from './orm';
 
 // TODO move this to actions..
 // import {

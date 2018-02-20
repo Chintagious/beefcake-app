@@ -1,0 +1,9 @@
+// // @flow
+import {
+  WeightliftingExercise,
+  WeightliftingExerciseSetRep,
+} from '../data/models';
+
+export const orm = {};
+
+export default orm;

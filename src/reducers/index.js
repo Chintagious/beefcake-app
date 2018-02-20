@@ -1,14 +1,10 @@
 // @flow
 import { combineReducers } from 'redux';
-import { createReducer } from 'redux-orm';
-
-import orm from '../orm';
 
 import weightliftingExerciseReducer from './WeightliftingExercise';
 import weightliftingExerciseSetRepReducer from './WeightliftingExerciseSetRep';
 
 const reducers = combineReducers({
-  orm: createReducer(orm),
   weightliftingExercises: weightliftingExerciseReducer,
   weightliftingExerciseSetReps: weightliftingExerciseSetRepReducer,
 });

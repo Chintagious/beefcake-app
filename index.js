@@ -11,16 +11,16 @@ import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import reducers from './src/reducers';
 import thunk from 'redux-thunk';
-import orm from './src/orm';
 
 function configureStore() {
+  console.log("Configuring store..");
 
   const createStoreWithMiddleware = applyMiddleware(
     __DEV__ && createLogger(), // apparently causes a ton of performance issues
     thunk,
   )(createStore);
 
-  const store = createStoreWithMiddleware(reducers, bootstrap(orm));
+  const store = createStoreWithMiddleware(reducers, bootstrap());
 
   return store;
 }

@@ -1,21 +1,26 @@
 // @flow
-import orm from '../orm';
 // import {
 // } from '../actionTypes';
 
-// const initialState = orm.session(orm.getEmptyState());
+var defaultState = {
+    WeightliftingExercise: [],
+    WeightliftingExerciseSetRep: [],
+}
 
-export default function weightliftingExerciseSetRepReducer(dbState: Object, action: Object) {
+// FIXME - This likely is no longer correct after removing ORM
+export default function weightliftingExerciseSetRepReducer(
+  initialState: Object = defaultState,
+  action: Object,
+) {
+  return (state: Object = initialState, action: Object) => {
     console.log("Running WeightliftingExerciseSetRep reducer.. ", action);
-
-    const session = orm.session(dbState);
 
     // Session-specific Models are available
     // as properties on the Session instance.
     const {
       WeightliftingExercise,
       WeightliftingExerciseSetRep,
-    } = session;
+    } = state;
 
 
     switch (action.type) {
@@ -26,5 +31,6 @@ export default function weightliftingExerciseSetRepReducer(dbState: Object, acti
     // the state property of Session always points to the current database.
     // Updates don't mutate the original state, so this reference is not
     // equal to `dbState` that was an argument to this reducer.
-    return session.state;
+    return state;
+  }
 }

@@ -1,17 +1,13 @@
 // @flow
 import PropTypes from 'prop-types';
-import { Model, many, fk, attr } from 'redux-orm';
-import { ValidatingModel } from '../ValidatingModel';
 import { WeightliftingExerciseSetRep } from '../WeightliftingExerciseSetRep';
 import { generateUUID } from '../../lib/uuid';
 
-export class WeightliftingExercise extends Model {
-//
-// static reducer(action, model) {
-// }
+export class WeightliftingExercise {
 
 }
 
+/*
 WeightliftingExercise.modelName = "WeightliftingExercise";
 WeightliftingExercise.fields = {
   id: attr({ getDefault: () => generateUUID() }),
@@ -32,3 +28,4 @@ WeightliftingExercise.propTypes = {
 
 // NOTE:
 // type above will contain name, abbreviation(?), description, default set values
+*/
